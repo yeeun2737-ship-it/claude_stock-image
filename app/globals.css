@@ -1,61 +1,106 @@
+/* DESIGN.md (Notion) 토큰 기반 */
 :root {
-  --bg: #fff8ee;
-  --card: #ffffff;
-  --ink: #3a2e2a;
-  --muted: #8a7a70;
-  --accent: #f58b34;
-  --accent-ink: #ffffff;
-  --line: #f0e2d0;
+  --canvas: #f6f5f4;
+  --surface: #ffffff;
+  --ink: #000000;
+  --ink-secondary: #31302e;
+  --ink-muted: #615d59;
+  --ink-faint: #a39e98;
+  --hairline: #e6e6e6;
+  --input-line: #dddddd;
+  --primary: #0075de;
+  --primary-active: #005bab;
+  --on-primary: #ffffff;
+  --danger: #c4311f;
+  --shadow-1: 0 0.175px 1.041px rgba(0,0,0,0.01), 0 0.8px 2.925px rgba(0,0,0,0.02),
+    0 2.025px 7.847px rgba(0,0,0,0.027), 0 4px 18px rgba(0,0,0,0.04);
 }
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #1f1a17;
-    --card: #2a231f;
-    --ink: #f4ebe2;
-    --muted: #b3a498;
-    --line: #3d332d;
+    --canvas: #191918;
+    --surface: #252523;
+    --ink: #f5f4f2;
+    --ink-secondary: #d9d6d2;
+    --ink-muted: #aaa5a0;
+    --ink-faint: #7d7873;
+    --hairline: #383836;
+    --input-line: #4a4946;
+    --primary: #3b9bf0;
+    --primary-active: #62aef0;
+    --on-primary: #00101f;
+    --danger: #ff8573;
   }
 }
 * { box-sizing: border-box; }
 body {
   margin: 0;
-  background: var(--bg);
+  background: var(--canvas);
   color: var(--ink);
-  font-family: -apple-system, "Pretendard", "Malgun Gothic", system-ui, sans-serif;
+  font-family: Inter, -apple-system, system-ui, "Segoe UI", "Pretendard", "Malgun Gothic", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
 }
-main { max-width: 960px; margin: 0 auto; padding: 24px 16px 64px; }
-h1 { font-size: 1.6rem; margin: 0 0 4px; }
-.sub { color: var(--muted); margin: 0 0 24px; }
-.card { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 16px; margin-bottom: 16px; }
-.card h2 { font-size: 1rem; margin: 0 0 12px; }
+main { max-width: 880px; margin: 0 auto; padding: 32px 16px 72px; }
+
+.badge {
+  display: inline-block; background: var(--surface); color: var(--primary);
+  border: 1px solid var(--hairline); border-radius: 9999px;
+  padding: 4px 10px; font-size: 12px; font-weight: 600; letter-spacing: 0.125px; margin-bottom: 12px;
+}
+h1 { font-size: 40px; line-height: 1.1; font-weight: 700; letter-spacing: -1px; margin: 0 0 8px; }
+.sub { color: var(--ink-muted); margin: 0 0 28px; font-size: 16px; }
+
+.card {
+  background: var(--surface); border: 1px solid var(--hairline); border-radius: 12px;
+  padding: 24px; margin-bottom: 16px;
+}
+.card.raised { box-shadow: var(--shadow-1); }
+.card h2 { font-size: 22px; line-height: 1.27; font-weight: 700; letter-spacing: -0.25px; margin: 0 0 14px; }
+
 .chips { display: flex; flex-wrap: wrap; gap: 8px; }
 .chip {
-  border: 1px solid var(--line); background: transparent; color: var(--ink);
-  padding: 8px 14px; border-radius: 999px; cursor: pointer; font: inherit;
+  display: inline-flex; align-items: center; gap: 8px;
+  border: 1px solid var(--hairline); background: var(--surface); color: var(--ink);
+  padding: 8px 14px; border-radius: 9999px; cursor: pointer;
+  font: inherit; font-size: 15px; font-weight: 500;
 }
-.chip.on { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.chip:hover { background: var(--canvas); }
+.chip .dot { width: 8px; height: 8px; border-radius: 50%; flex: none; }
+.chip.on { background: var(--ink); border-color: var(--ink); color: var(--canvas); }
+
 .row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
 input[type="text"], input[type="password"], select {
-  font: inherit; padding: 10px 12px; border-radius: 10px;
-  border: 1px solid var(--line); background: var(--bg); color: var(--ink);
+  font: inherit; font-size: 15px; padding: 8px 10px; border-radius: 4px;
+  border: 1px solid var(--input-line); background: var(--surface); color: var(--ink);
   min-width: 0; flex: 1 1 160px;
 }
+input:focus, select:focus { outline: 0; box-shadow: var(--shadow-1); border-color: var(--primary); }
+
 button.primary {
-  background: var(--accent); color: var(--accent-ink); border: 0; border-radius: 12px;
-  padding: 12px 20px; font: inherit; font-weight: 700; cursor: pointer;
+  background: var(--primary); color: var(--on-primary); border: 0; border-radius: 9999px;
+  padding: 10px 22px; font: inherit; font-weight: 500; cursor: pointer;
 }
-button.primary:disabled { opacity: 0.5; cursor: default; }
+button.primary:active { background: var(--primary-active); transform: scale(0.97); }
+button.primary:disabled { opacity: 0.45; cursor: default; transform: none; }
 button.ghost {
-  background: transparent; border: 1px solid var(--line); color: var(--ink);
-  border-radius: 10px; padding: 8px 12px; font: inherit; cursor: pointer;
+  background: var(--surface); border: 1px solid var(--hairline); color: var(--ink);
+  border-radius: 8px; padding: 6px 14px; font: inherit; font-size: 15px; font-weight: 500; cursor: pointer;
 }
-.err { color: #d1453b; margin: 8px 0 0; }
+button.ghost:hover { background: var(--canvas); }
+
+.err { color: var(--danger); margin: 10px 0 0; font-size: 15px; }
 .sheet {
   border-radius: 12px; width: 100%; height: auto; display: block;
-  background-color: #fff;
-  background-image: linear-gradient(45deg, #e9e2da 25%, transparent 25%, transparent 75%, #e9e2da 75%),
-    linear-gradient(45deg, #e9e2da 25%, transparent 25%, transparent 75%, #e9e2da 75%);
+  border: 1px solid var(--hairline); background-color: #fff;
+  background-image: linear-gradient(45deg, #ececea 25%, transparent 25%, transparent 75%, #ececea 75%),
+    linear-gradient(45deg, #ececea 25%, transparent 25%, transparent 75%, #ececea 75%);
   background-size: 24px 24px; background-position: 0 0, 12px 12px;
 }
-.meta pre { white-space: pre-wrap; margin: 0; font: inherit; }
-.small { font-size: 0.85rem; color: var(--muted); }
+.meta pre { white-space: pre-wrap; margin: 0; font: inherit; font-size: 15px; line-height: 1.5; color: var(--ink-secondary); }
+.small { font-size: 14px; line-height: 1.43; color: var(--ink-muted); margin: 12px 0 0; }
+label { font-size: 15px; color: var(--ink-secondary); }
+
+@media (max-width: 600px) {
+  h1 { font-size: 32px; }
+  .card { padding: 18px; }
+}

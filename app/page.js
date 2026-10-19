@@ -4,7 +4,10 @@ import { useEffect, useState } from "react";
 import { DEFAULT_KEYWORDS } from "../lib/keywords";
 import { STYLES } from "../lib/styles";
 
-const safeGet = (k) => {
+// DESIGN.md의 스티커 팔레트 (장식 전용)
+const STICKERS = ["#dd5b00", "#d6b6f6", "#ff64c8", "#2a9d99", "#1aae39", "#62aef0"];
+
+const safeGet =(k) => {
   try { return localStorage.getItem(k); } catch { return null; }
 };
 const safeSet = (k, v) => {
@@ -91,14 +94,16 @@ export default function Home() {
 
   return (
     <main>
+      <span className="badge">미리캔버스 스톡 작가용</span>
       <h1>스톡 그림 자판기</h1>
       <p className="sub">키워드와 그림체를 고르면 투명 배경 PNG 시트 한 장이 나와요. Procreate에서 하나씩 잘라 쓰세요.</p>
 
-      <section className="card">
+      <section className="card raised">
         <h2>1. 키워드</h2>
         <div className="chips">
-          {keywords.map((k) => (
+          {keywords.map((k, i) => (
             <button key={k.ko} className={`chip ${keyword.ko === k.ko ? "on" : ""}`} onClick={() => setKeyword(k)}>
+              <span className="dot" style={{ background: STICKERS[i % STICKERS.length] }} />
               {k.ko}
             </button>
           ))}
@@ -111,7 +116,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="card">
+      <section className="card raised">
         <h2>2. 그림체</h2>
         <div className="chips">
           {STYLES.map((s) => (
@@ -129,7 +134,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="card">
+      <section className="card raised">
         <h2>3. 생성</h2>
         <div className="row">
           <input type="password" placeholder="접속 비밀번호" value={password} onChange={(e) => setPassword(e.target.value)} />
@@ -141,7 +146,7 @@ export default function Home() {
       </section>
 
       {image && (
-        <section className="card">
+        <section className="card raised">
           <h2>결과</h2>
           <img className="sheet" src={image} alt={`${keyword.ko} 요소 시트`} />
           <div className="row" style={{ marginTop: 12 }}>
