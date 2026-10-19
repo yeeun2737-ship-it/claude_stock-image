@@ -1,0 +1,61 @@
+:root {
+  --bg: #fff8ee;
+  --card: #ffffff;
+  --ink: #3a2e2a;
+  --muted: #8a7a70;
+  --accent: #f58b34;
+  --accent-ink: #ffffff;
+  --line: #f0e2d0;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #1f1a17;
+    --card: #2a231f;
+    --ink: #f4ebe2;
+    --muted: #b3a498;
+    --line: #3d332d;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: -apple-system, "Pretendard", "Malgun Gothic", system-ui, sans-serif;
+}
+main { max-width: 960px; margin: 0 auto; padding: 24px 16px 64px; }
+h1 { font-size: 1.6rem; margin: 0 0 4px; }
+.sub { color: var(--muted); margin: 0 0 24px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 16px; margin-bottom: 16px; }
+.card h2 { font-size: 1rem; margin: 0 0 12px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip {
+  border: 1px solid var(--line); background: transparent; color: var(--ink);
+  padding: 8px 14px; border-radius: 999px; cursor: pointer; font: inherit;
+}
+.chip.on { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+input[type="text"], input[type="password"], select {
+  font: inherit; padding: 10px 12px; border-radius: 10px;
+  border: 1px solid var(--line); background: var(--bg); color: var(--ink);
+  min-width: 0; flex: 1 1 160px;
+}
+button.primary {
+  background: var(--accent); color: var(--accent-ink); border: 0; border-radius: 12px;
+  padding: 12px 20px; font: inherit; font-weight: 700; cursor: pointer;
+}
+button.primary:disabled { opacity: 0.5; cursor: default; }
+button.ghost {
+  background: transparent; border: 1px solid var(--line); color: var(--ink);
+  border-radius: 10px; padding: 8px 12px; font: inherit; cursor: pointer;
+}
+.err { color: #d1453b; margin: 8px 0 0; }
+.sheet {
+  border-radius: 12px; width: 100%; height: auto; display: block;
+  background-color: #fff;
+  background-image: linear-gradient(45deg, #e9e2da 25%, transparent 25%, transparent 75%, #e9e2da 75%),
+    linear-gradient(45deg, #e9e2da 25%, transparent 25%, transparent 75%, #e9e2da 75%);
+  background-size: 24px 24px; background-position: 0 0, 12px 12px;
+}
+.meta pre { white-space: pre-wrap; margin: 0; font: inherit; }
+.small { font-size: 0.85rem; color: var(--muted); }
