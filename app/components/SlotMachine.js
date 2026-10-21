@@ -97,18 +97,30 @@ export default function SlotMachine({ pool, selected, onPick, monthLabel }) {
               <stop offset="1" stopColor="#e3d4ff" />
             </radialGradient>
             <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
-              <stop offset="0" stopColor="#fff3a8" stopOpacity="0.9" />
-              <stop offset="1" stopColor="#fff3a8" stopOpacity="0" />
+              <stop offset="0" stopColor="#e9d5ff" stopOpacity="0.95" />
+              <stop offset="0.55" stopColor="#f5b8ec" stopOpacity="0.45" />
+              <stop offset="1" stopColor="#c4a1ff" stopOpacity="0" />
             </radialGradient>
           </defs>
           <ellipse cx="150" cy="422" rx="120" ry="11" fill="#e4d6fb" opacity="0.95" />
 
-          {/* 사이렌 + 빛 번짐 */}
-          <circle className="halo" cx="150" cy="48" r="46" fill="url(#glow)" />
-          <g stroke="#f3b93c" strokeWidth="4" strokeLinecap="round">
-            <path d="M118 30 L110 16" /><path d="M150 24 L150 8" /><path d="M182 30 L190 16" />
+          {/* 크리스탈 + 빛 번짐 */}
+          <circle className="halo" cx="150" cy="30" r="64" fill="url(#glow)" />
+          <g transform="translate(150 62) scale(1.35) translate(-150 -62)">
+          {/* 작은 크리스탈 */}
+          <polygon points="108,62 118,38 130,62" fill="#f5a8e4" stroke={OUT} strokeWidth="4" strokeLinejoin="round" />
+          <polygon points="118,38 130,62 118,62" fill="#ffd0f2" opacity="0.8" />
+          <polygon points="192,62 182,40 170,62" fill="#9fd8f7" stroke={OUT} strokeWidth="4" strokeLinejoin="round" />
+          <polygon points="182,40 170,62 182,62" fill="#d4efff" opacity="0.8" />
+          {/* 큰 크리스탈 (면마다 색이 달라요) */}
+          <polygon points="150,4 172,24 164,62 136,62 128,24" fill="#c9a8ff" stroke={OUT} strokeWidth="4" strokeLinejoin="round" />
+          <polygon points="150,4 128,24 136,62 150,62" fill="#e2d1ff" />
+          <polygon points="150,4 172,24 164,62 150,62" fill="#a371f0" />
+          <polygon className="facet" points="150,4 128,24 150,32 172,24" fill="#f6eeff" />
+          <path d="M128 24 L150 32 L172 24 M150 32 L150 62" fill="none" stroke={OUT} strokeWidth="2.5" strokeLinejoin="round" opacity="0.7" />
+          <path d="M138 30 L141 52" stroke="#fff" strokeWidth="3.5" strokeLinecap="round" opacity="0.85" />
+          <polygon points="150,4 172,24 164,62 136,62 128,24" fill="none" stroke={OUT} strokeWidth="4" strokeLinejoin="round" />
           </g>
-          <path d="M122 62 Q122 34 150 34 Q178 34 178 62 Z" fill="#ffe27a" stroke={OUT} strokeWidth="5" strokeLinejoin="round" />
 
           {/* 몸체 */}
           <rect x="30" y="58" width="240" height="342" rx="30" fill="url(#bodyG)" stroke={OUT} strokeWidth="5" />
@@ -169,8 +181,8 @@ export default function SlotMachine({ pool, selected, onPick, monthLabel }) {
           <Twinkle x={306} y={64} s={1.1} d={0.5} c="#ffc933" />
           <Twinkle x={16} y={250} s={0.9} d={1.1} c="#c4a1ff" />
           <Twinkle x={308} y={286} s={1.4} d={0.3} c="#f472b6" />
-          <Twinkle x={96} y={12} s={0.8} d={0.8} c="#ffc933" />
-          <Twinkle x={214} y={20} s={0.9} d={1.4} c="#a855f7" />
+          <Twinkle x={96} y={12} s={0.8} d={0.8} c="#ffffff" />
+          <Twinkle x={214} y={20} s={0.9} d={1.4} c="#f472b6" />
           <Twinkle x={14} y={380} s={1} d={0.6} c="#ffc933" />
           <Twinkle x={304} y={400} s={0.8} d={1.2} c="#a855f7" />
           <Twinkle x={246} y={132} s={0.7} d={0.2} c="#fff" />

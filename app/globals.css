@@ -172,3 +172,5 @@ label { font-size: 15px; color: var(--ink-secondary); }
 @keyframes twinkle { 0%,100% { transform: scale(0.35) rotate(0); opacity: 0.25; } 50% { transform: scale(1) rotate(35deg); opacity: 1; } }
 @keyframes haloPulse { 0%,100% { opacity: 0.55; transform: scale(0.9); } 50% { opacity: 1; transform: scale(1.12); } }
 @keyframes glint { 0%,55% { transform: translateX(-40px) skewX(-20deg); opacity: 0; } 62% { opacity: 0.6; } 100% { transform: translateX(260px) skewX(-20deg); opacity: 0; } }
+.facet { animation: facet 2.4s ease-in-out infinite; }
+@keyframes facet { 0%,100% { opacity: 0.55; } 50% { opacity: 1; } }
