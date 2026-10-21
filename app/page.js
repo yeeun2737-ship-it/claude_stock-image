@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { MONTH_KEYWORDS } from "../lib/keywords";
 import { STYLES } from "../lib/styles";
 import GachaMachine from "./components/GachaMachine";
+import SlotMachine from "./components/SlotMachine";
 
 const safeGet = (k) => {
   try { return localStorage.getItem(k); } catch { return null; }
@@ -27,7 +28,12 @@ export default function Home() {
 
   useEffect(() => { setPassword(safeGet("pw") || ""); }, []);
 
+  const [machine, setMachine] = useState("capsule"); // capsule | slot
+
+  useEffect(() => { setMachine(safeGet("machine") === "slot" ? "slot" : "capsule"); }, []);
+
   const changeMonth = (m) => { setMonth(m); setKeyword(null); };
+  const changeMachine = (m) => { setMachine(m); setKeyword(null); safeSet("machine", m); };
 
   const applyCustom = () => {
     const ko = customKo.trim();
@@ -91,13 +97,16 @@ export default function Home() {
           </label>
         </div>
 
-        <GachaMachine
-          key={month}
-          pool={MONTH_KEYWORDS[month]}
-          selected={keyword}
-          onPick={setKeyword}
-          monthLabel={`${month}월`}
-        />
+        <div className="mode" role="tablist" aria-label="뽑기 방식">
+          <button role="tab" aria-selected={machine === "capsule"} className={`chip ${machine === "capsule" ? "on" : ""}`} onClick={() => changeMachine("capsule")}>캡슐 뽑기</button>
+          <button role="tab" aria-selected={machine === "slot"} className={`chip ${machine === "slot" ? "on" : ""}`} onClick={() => changeMachine("slot")}>슬롯머신</button>
+        </div>
+
+        {machine === "capsule" ? (
+          <GachaMachine key={`c${month}`} pool={MONTH_KEYWORDS[month]} selected={keyword} onPick={setKeyword} monthLabel={`${month}월`} />
+        ) : (
+          <SlotMachine key={`s${month}`} pool={MONTH_KEYWORDS[month]} selected={keyword} onPick={setKeyword} monthLabel={`${month}월`} />
+        )}
 
         <details className="custom">
           <summary>직접 키워드 입력</summary>
