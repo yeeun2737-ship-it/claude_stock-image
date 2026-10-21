@@ -105,7 +105,7 @@ label { font-size: 15px; color: var(--ink-secondary); }
   .card { padding: 18px; }
 }
 
-/* ---- 캡슐 뽑기 머신 ---- */
+/* ---- 키워드 뽑기 머신 ---- */
 .card-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; }
 .card-head h2 { margin: 0; }
 .month select { flex: 0 0 auto; min-width: 0; }
@@ -119,16 +119,6 @@ label { font-size: 15px; color: var(--ink-secondary); }
 .machine svg { display: block; overflow: visible; }
 .gacha-hint { color: var(--ink-muted); font-size: 15px; margin: 6px 0 0; text-align: center; }
 
-.gacha.spinning .machine svg { animation: shake 0.28s ease-in-out infinite; transform-origin: 50% 100%; }
-.gacha.spinning .cap { animation: tumble 0.5s ease-in-out infinite alternate; }
-.gacha.spinning .cap-1 { animation-delay: -0.1s; animation-duration: 0.42s; }
-.gacha.spinning .cap-2 { animation-delay: -0.2s; animation-duration: 0.55s; }
-.gacha.spinning .cap-3 { animation-delay: -0.3s; animation-duration: 0.38s; }
-.gacha.spinning .cap-4 { animation-delay: -0.15s; animation-duration: 0.47s; }
-.gacha.spinning .cap-5 { animation-delay: -0.25s; animation-duration: 0.6s; }
-.gacha.spinning .dial { animation: spin 1.5s ease-in-out; transform-box: fill-box; transform-origin: center; }
-.gacha.idle .bubble { animation: bob 1.6s ease-in-out infinite; }
-.gacha.spinning .bubble { opacity: 0; }
 
 .tray { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 18px; width: 100%; }
 .cap-item {
@@ -143,28 +133,20 @@ label { font-size: 15px; color: var(--ink-secondary); }
 .cap-svg { display: block; width: 84px; height: 84px; }
 .cap-svg svg { width: 100%; height: 100%; overflow: visible; }
 .cap-label { font-size: 15px; font-weight: 600; text-align: center; line-height: 1.3; }
-.cap-top { transform-box: fill-box; transform-origin: 10% 100%; transition: transform 0.4s ease; }
-.cap-top.open { transform: translate(6px, -14px) rotate(24deg); animation: pop 0.6s ease both; animation-delay: calc(var(--i, 0) * 0.22s + 0.55s); }
-.cap-item .cap-top.open { animation-delay: calc(var(--i) * 0.22s + 0.55s); }
 
 .custom { margin-top: 14px; font-size: 15px; color: var(--ink-secondary); }
 .custom summary { cursor: pointer; color: var(--ink-muted); }
 .picked { margin: 14px 0 0; text-align: center; color: var(--ink-muted); font-size: 15px; }
 .picked strong { color: var(--ink); }
 
-@keyframes shake { 0%,100% { transform: translateX(0) rotate(0); } 25% { transform: translateX(-4px) rotate(-1.2deg); } 75% { transform: translateX(4px) rotate(1.2deg); } }
-@keyframes tumble { from { transform: translate(-14px, 10px) rotate(-30deg); } to { transform: translate(14px, -16px) rotate(35deg); } }
-@keyframes spin { to { transform: rotate(540deg); } }
 @keyframes bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
 @keyframes drop { from { transform: translateY(-120px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
-@keyframes pop { 0% { transform: translate(0,0) rotate(0); } 60% { transform: translate(8px,-20px) rotate(30deg); } 100% { transform: translate(6px,-14px) rotate(24deg); } }
 
 @media (prefers-reduced-motion: reduce) {
   .gacha * { animation: none !important; transition: none !important; }
 }
 
 /* ---- 슬롯머신 ---- */
-.mode { display: flex; gap: 8px; justify-content: center; margin: 4px 0 8px; }
 .strip { transition: transform 0.45s cubic-bezier(.2,1.3,.4,1); }
 .strip.run { animation: reel 0.45s linear infinite; transition: none; }
 .strip.s1.run { animation-duration: 0.38s; }
@@ -172,6 +154,5 @@ label { font-size: 15px; color: var(--ink-secondary); }
 .lever { transform-box: view-box; transform-origin: 278px 180px; }
 .gacha.slot.spinning .lever { animation: pull 1.6s ease-in-out; }
 .gacha.slot.idle .lever { animation: bob 1.6s ease-in-out infinite; }
-.gacha.slot.spinning .machine svg { animation: none; }
 @keyframes reel { from { transform: translateY(15px); } to { transform: translateY(-285px); } }
 @keyframes pull { 0% { transform: rotate(0); } 15% { transform: rotate(38deg); } 55% { transform: rotate(38deg); } 100% { transform: rotate(0); } }
