@@ -104,21 +104,22 @@ export default function SlotMachine({ pool, selected, onPick, monthLabel }) {
           <ellipse cx="150" cy="422" rx="120" ry="11" fill="#e4d6fb" opacity="0.95" />
 
           {/* 크리스탈 + 빛 번짐 */}
-          <circle className="halo" cx="150" cy="46" r="40" fill="url(#glow)" />
+          <circle className="halo" cx="150" cy="40" r="42" fill="url(#glow)" />
           <g stroke="#f3b93c" strokeWidth="4" strokeLinecap="round">
-            <path d="M120 28 L111 15" /><path d="M150 20 L150 5" /><path d="M180 28 L189 15" />
+            <path d="M116 24 L107 11" /><path d="M150 14 L150 -1" /><path d="M184 24 L193 11" />
           </g>
-          {/* 작은 6각 크리스탈 (노란색) */}
-          <g strokeLinejoin="round" transform="translate(150 62) scale(1.25) translate(-150 -62)">
-            <polygon points="150,47 141.5,32.3 158.5,32.3" fill="#fff3b0" />
-            <polygon points="150,47 158.5,32.3 167,47" fill="#ffe27a" />
-            <polygon points="150,47 167,47 158.5,61.7" fill="#f3b93c" />
-            <polygon points="150,47 158.5,61.7 141.5,61.7" fill="#f0b030" />
-            <polygon points="150,47 141.5,61.7 133,47" fill="#ffd24d" />
-            <polygon className="facet" points="150,47 133,47 141.5,32.3" fill="#fff0a0" />
-            <path d="M150 47 L141.5 32.3 M150 47 L158.5 32.3 M150 47 L167 47 M150 47 L158.5 61.7 M150 47 L141.5 61.7 M150 47 L133 47" stroke={OUT} strokeWidth="2" fill="none" opacity="0.55" />
-            <polygon points="167,47 158.5,61.7 141.5,61.7 133,47 141.5,32.3 158.5,32.3" fill="none" stroke={OUT} strokeWidth="4" />
-            <path d="M139 44 L144 36" stroke="#fff" strokeWidth="3" strokeLinecap="round" opacity="0.9" />
+          {/* 반원 크리스탈 돔 (노란색, 면이 나뉜 보석) */}
+          <g strokeLinejoin="round" transform="translate(150 58) scale(1.2) translate(-150 -62)">
+            <path d="M124 62 L127.5 49 L150 62 Z" fill="#f0b030" />
+            <path d="M127.5 49 L137 39.5 L150 62 Z" fill="#ffd24d" />
+            <path d="M137 39.5 L150 36 L150 62 Z" fill="#fff0a0" />
+            <path className="facet" d="M150 36 L163 39.5 L150 62 Z" fill="#ffe27a" />
+            <path d="M163 39.5 L172.5 49 L150 62 Z" fill="#ffc933" />
+            <path d="M172.5 49 L176 62 L150 62 Z" fill="#f0b030" />
+            <path d="M138 62 A12 12 0 0 1 162 62 Z" fill="#fff7c8" opacity="0.85" />
+            <path d="M124 62 L150 62 M127.5 49 L150 62 M137 39.5 L150 62 M150 36 L150 62 M163 39.5 L150 62 M172.5 49 L150 62 M176 62 L150 62" stroke={OUT} strokeWidth="2" fill="none" opacity="0.5" />
+            <path d="M124 62 A26 26 0 0 1 176 62 Z" fill="none" stroke={OUT} strokeWidth="4" />
+            <path d="M131 52 Q134 45 141 41.5" stroke="#fff" strokeWidth="3" strokeLinecap="round" fill="none" opacity="0.9" />
           </g>
 
           {/* 몸체 */}
