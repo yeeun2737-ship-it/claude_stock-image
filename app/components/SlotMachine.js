@@ -97,29 +97,28 @@ export default function SlotMachine({ pool, selected, onPick, monthLabel }) {
               <stop offset="1" stopColor="#e3d4ff" />
             </radialGradient>
             <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
-              <stop offset="0" stopColor="#e9d5ff" stopOpacity="0.95" />
-              <stop offset="0.55" stopColor="#f5b8ec" stopOpacity="0.45" />
-              <stop offset="1" stopColor="#c4a1ff" stopOpacity="0" />
+              <stop offset="0" stopColor="#fff3a8" stopOpacity="0.9" />
+              <stop offset="1" stopColor="#fff3a8" stopOpacity="0" />
             </radialGradient>
           </defs>
           <ellipse cx="150" cy="422" rx="120" ry="11" fill="#e4d6fb" opacity="0.95" />
 
           {/* 크리스탈 + 빛 번짐 */}
-          <circle className="halo" cx="150" cy="30" r="64" fill="url(#glow)" />
-          <g transform="translate(150 62) scale(1.35) translate(-150 -62)">
-          {/* 작은 크리스탈 */}
-          <polygon points="108,62 118,38 130,62" fill="#f5a8e4" stroke={OUT} strokeWidth="4" strokeLinejoin="round" />
-          <polygon points="118,38 130,62 118,62" fill="#ffd0f2" opacity="0.8" />
-          <polygon points="192,62 182,40 170,62" fill="#9fd8f7" stroke={OUT} strokeWidth="4" strokeLinejoin="round" />
-          <polygon points="182,40 170,62 182,62" fill="#d4efff" opacity="0.8" />
-          {/* 큰 크리스탈 (면마다 색이 달라요) */}
-          <polygon points="150,4 172,24 164,62 136,62 128,24" fill="#c9a8ff" stroke={OUT} strokeWidth="4" strokeLinejoin="round" />
-          <polygon points="150,4 128,24 136,62 150,62" fill="#e2d1ff" />
-          <polygon points="150,4 172,24 164,62 150,62" fill="#a371f0" />
-          <polygon className="facet" points="150,4 128,24 150,32 172,24" fill="#f6eeff" />
-          <path d="M128 24 L150 32 L172 24 M150 32 L150 62" fill="none" stroke={OUT} strokeWidth="2.5" strokeLinejoin="round" opacity="0.7" />
-          <path d="M138 30 L141 52" stroke="#fff" strokeWidth="3.5" strokeLinecap="round" opacity="0.85" />
-          <polygon points="150,4 172,24 164,62 136,62 128,24" fill="none" stroke={OUT} strokeWidth="4" strokeLinejoin="round" />
+          <circle className="halo" cx="150" cy="46" r="40" fill="url(#glow)" />
+          <g stroke="#f3b93c" strokeWidth="4" strokeLinecap="round">
+            <path d="M120 28 L111 15" /><path d="M150 20 L150 5" /><path d="M180 28 L189 15" />
+          </g>
+          {/* 작은 6각 크리스탈 (노란색) */}
+          <g strokeLinejoin="round" transform="translate(150 62) scale(1.25) translate(-150 -62)">
+            <polygon points="150,47 141.5,32.3 158.5,32.3" fill="#fff3b0" />
+            <polygon points="150,47 158.5,32.3 167,47" fill="#ffe27a" />
+            <polygon points="150,47 167,47 158.5,61.7" fill="#f3b93c" />
+            <polygon points="150,47 158.5,61.7 141.5,61.7" fill="#f0b030" />
+            <polygon points="150,47 141.5,61.7 133,47" fill="#ffd24d" />
+            <polygon className="facet" points="150,47 133,47 141.5,32.3" fill="#fff0a0" />
+            <path d="M150 47 L141.5 32.3 M150 47 L158.5 32.3 M150 47 L167 47 M150 47 L158.5 61.7 M150 47 L141.5 61.7 M150 47 L133 47" stroke={OUT} strokeWidth="2" fill="none" opacity="0.55" />
+            <polygon points="167,47 158.5,61.7 141.5,61.7 133,47 141.5,32.3 158.5,32.3" fill="none" stroke={OUT} strokeWidth="4" />
+            <path d="M139 44 L144 36" stroke="#fff" strokeWidth="3" strokeLinecap="round" opacity="0.9" />
           </g>
 
           {/* 몸체 */}
@@ -181,8 +180,8 @@ export default function SlotMachine({ pool, selected, onPick, monthLabel }) {
           <Twinkle x={306} y={64} s={1.1} d={0.5} c="#ffc933" />
           <Twinkle x={16} y={250} s={0.9} d={1.1} c="#c4a1ff" />
           <Twinkle x={308} y={286} s={1.4} d={0.3} c="#f472b6" />
-          <Twinkle x={96} y={12} s={0.8} d={0.8} c="#ffffff" />
-          <Twinkle x={214} y={20} s={0.9} d={1.4} c="#f472b6" />
+          <Twinkle x={96} y={12} s={0.8} d={0.8} c="#ffc933" />
+          <Twinkle x={214} y={20} s={0.9} d={1.4} c="#a855f7" />
           <Twinkle x={14} y={380} s={1} d={0.6} c="#ffc933" />
           <Twinkle x={304} y={400} s={0.8} d={1.2} c="#a855f7" />
           <Twinkle x={246} y={132} s={0.7} d={0.2} c="#fff" />
