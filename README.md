@@ -9,7 +9,7 @@
 | `APP_PASSWORD` | 접속 비밀번호. 없으면 생성이 막힙니다 |
 | `GEMINI_API_KEY` | Google Gemini 키. 서버에서만 사용 |
 | `GEMINI_IMAGE_MODEL` | (선택) 기본 `gemini-3.1-flash-lite-image` |
-| `GEMINI_TEXT_MODEL` | (선택) 기본 `gemini-2.5-flash` |
+| `GEMINI_TEXT_MODEL` | (선택) 기본 `gemini-3.5-flash-lite` |
 
 저장소가 공개 상태이므로 키와 비밀번호는 절대 커밋하지 마세요. `.env.local.example` 참고.
 
